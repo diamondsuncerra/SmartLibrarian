@@ -1,0 +1,74 @@
+[
+  {
+    "title": "1984",
+    "tags": ["dystopia", "totalitarianism", "surveillance", "freedom"],
+    "short": "A clerk rebels against a regime that controls truth and thought.",
+    "full": "George Orwell’s classic follows Winston Smith as he navigates a society dominated by Big Brother, where history is rewritten and independent thought is punished. As Winston falls in love and joins a resistance, he confronts the crushing machinery of propaganda and control, raising timeless questions about truth, power, and the human spirit."
+  },
+  {
+    "title": "The Hobbit",
+    "tags": ["friendship", "adventure", "fantasy", "courage", "journey"],
+    "short": "A reluctant hobbit joins a quest to reclaim a lost dwarven homeland.",
+    "full": "Bilbo Baggins is swept from his cozy hobbit-hole into a trek across Middle-earth with thirteen dwarves and a wizard. Along the way he survives trolls, goblins, spiders, and a dragon, discovering bravery and cunning he didn’t know he possessed—and finding a mysterious ring that changes everything."
+  },
+  {
+    "title": "Fahrenheit 451",
+    "tags": ["dystopia", "censorship", "books", "rebellion"],
+    "short": "A fireman who burns books begins to question his society.",
+    "full": "Guy Montag lives in a future where books are outlawed and firemen burn them. After meeting a free-spirited neighbor and witnessing a woman choose to die with her library, he awakens to the emptiness of his world and risks everything to preserve knowledge and memory."
+  },
+  {
+    "title": "Brave New World",
+    "tags": ["dystopia", "genetic engineering", "consumerism", "control"],
+    "short": "A perfectly managed society hides a deep cost to freedom and meaning.",
+    "full": "In a world engineered for stability and pleasure, individuality and deep feeling are liabilities. When an outsider arrives, the polished veneer cracks, exposing trade-offs between comfort and humanity. Huxley’s novel probes technology’s power to pacify—and to hollow out what makes us human."
+  },
+  {
+    "title": "The Catcher in the Rye",
+    "tags": ["coming-of-age", "alienation", "identity"],
+    "short": "A teen wanders New York, searching for authenticity in a phony world.",
+    "full": "Holden Caulfield flees his prep school and drifts through Manhattan, wrestling with grief, innocence, and belonging. His voice is raw, funny, and aching, capturing the limbo between adolescence and adulthood and the longing for something uncorrupted."
+  },
+  {
+    "title": "To Kill a Mockingbird",
+    "tags": ["justice", "race", "empathy", "childhood"],
+    "short": "A girl witnesses her father defend an innocent man in the Jim Crow South.",
+    "full": "Scout Finch grows up in Maycomb, Alabama, where her father Atticus defends a Black man wrongly accused of a crime. Through Scout’s eyes, the novel explores prejudice, moral courage, and the slow work of learning empathy."
+  },
+  {
+    "title": "The Road",
+    "tags": ["post-apocalyptic", "survival", "fatherhood", "hope"],
+    "short": "A father and son journey across a ruined America, clinging to goodness.",
+    "full": "In ashen landscapes where humanity has thinned to its barest edges, a father and son push a cart south, scavenging for food and shelter. Their bond—and a stubborn commitment to ‘carry the fire’—becomes a fragile bulwark against despair."
+  },
+  {
+    "title": "A Man Called Ove",
+    "tags": ["grief", "community", "friendship", "second chances"],
+    "short": "A curmudgeon’s life changes when messy new neighbors arrive.",
+    "full": "Ove plans to be done with life, but a chaotic young family next door keeps interrupting him. Through reluctant favors and unexpected friendships, Ove’s prickly exterior gives way, revealing a tender story about loss, love, and the quiet ways we save one another."
+  },
+  {
+    "title": "The Book Thief",
+    "tags": ["WWII", "found family", "books", "courage"],
+    "short": "A girl steals books and shares them during wartime, narrated by Death.",
+    "full": "In Nazi Germany, Liesel Meminger finds solace in stolen books and the people who gather to hear her read in a basement. Death narrates a tale of cruelty and kindness, showing how words can shelter and resist even in the darkest times."
+  },
+  {
+    "title": "The Martian",
+    "tags": ["science", "survival", "humor", "ingenuity"],
+    "short": "An astronaut stranded on Mars must science his way home.",
+    "full": "Left behind after a dust storm, Mark Watney survives with botany, engineering, and gallows humor. From growing potatoes in Martian soil to hacking communications, he turns a death sentence into a thrilling fight to live, showcasing human grit and problem-solving."
+  },
+  {
+    "title": "All the Light We Cannot See",
+    "tags": ["WWII", "blindness", "radio", "fate"],
+    "short": "A blind French girl and a German boy cross paths during WWII.",
+    "full": "Marie-Laure flees Paris with a priceless gem; Werner, a gifted German orphan, is drafted for his radio skills. Their stories converge in occupied France, illuminating how small acts of kindness can pierce a world at war."
+  },
+  {
+    "title": "The Night Circus",
+    "tags": ["fantasy", "romance", "competition", "magic"],
+    "short": "Two magicians bound by a deadly game fall in love in a magical circus.",
+    "full": "A mysterious circus appears without warning, its tents housing wonders. Behind the scenes, two young illusionists are trained to duel through creation itself. As their love deepens, they must bend the rules of the game—or be destroyed by it."
+  }
+]
