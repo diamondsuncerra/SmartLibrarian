@@ -22,9 +22,14 @@ from openai import OpenAI
 from chromadb import PersistentClient
 from chromadb.config import Settings
 from chromadb.utils import embedding_functions
+# path shim stays as you had it
+from app.services.tts import synthesize_tts
+# STT ready for later:
+from app.services.stt import transcribe_audio
 
 # local tool
 from app.tools import get_summary_by_title
+
 
 # ---------- Constants / paths ----------
 DATA_PATH = ROOT / "data" / "book_summaries.json"
@@ -243,6 +248,20 @@ def run_cli():
 
         answer = recommend_with_toolcall(q, hits)
         print(f"\n{answer}\n")
+        # --- TTS: speak the final answer ---
+        from app.services.tts import synthesize_tts
+
+        try:
+            audio_path = synthesize_tts(answer, voice="alloy")
+            print(f"[TTS] Saved to: {audio_path}")
+            try:
+                import os
+                os.startfile(audio_path)  # auto-play on Windows (best-effort)
+            except Exception:
+                pass
+        except Exception as e:
+            print(f"[TTS] Failed: {e}")
+
 
 # ---------- Streamlit UI ----------
 def run_ui():
@@ -285,6 +304,19 @@ def run_ui():
                 answer = recommend_with_toolcall(q, hits)
                 st.markdown("---")
                 st.markdown(answer)
+
+                # --- TTS: synthesize and render audio player ---
+                from app.services.tts import synthesize_tts
+                try:
+                    # if you store the voice in session/side-bar, use that; else pick one
+                    voice = st.session_state.get("voice", "alloy")
+                    audio_path = synthesize_tts(answer, voice=voice)
+                    st.audio(str(audio_path), format="audio/mp3")
+                except Exception as e:
+                    st.warning(f"TTS failed: {e}")
+
+
+
             except Exception as e:
                 st.error(f"Something went wrong: {e}")
 
