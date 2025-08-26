@@ -45,7 +45,7 @@ python -m venv .venv
 source .venv/bin/activate
 
 pip install -r requirements.txt
-
+```
 Create .env at the repo root (copy from .env.example if present):
 
 OPENAI_API_KEY=sk-...
@@ -56,9 +56,9 @@ ENABLE_COVER=1
 
 
 Run the API (pick a free port, e.g. 8020):
-
+```bash
 uvicorn app.api:app --app-dir . --port 8020
-
+```
 
 📖 Docs: http://localhost:8020/docs
 
@@ -66,10 +66,10 @@ uvicorn app.api:app --app-dir . --port 8020
 ```bash
 cd frontend
 npm install
-
+```
 
 Make sure frontend/vite.config.js proxies to your API port:
-
+```bash
 server: {
   port: 5173,
   proxy: {
@@ -77,12 +77,12 @@ server: {
     '/static': 'http://localhost:8020'
   }
 }
-
+```
 
 Run:
 ```bash
 npm run dev
-
+```
 
 ## 🖥️ App: http://localhost:5173
 
@@ -157,3 +157,4 @@ Audio → .chroma/stt/<hash>.mp3 (served at /static/stt/...)
 
 Image → .chroma/img/<hash>.png (served at /static/img/...)
 Filenames must match the URLs returned by /api/recommend.
+
