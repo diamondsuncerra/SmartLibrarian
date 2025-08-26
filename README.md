@@ -1,28 +1,43 @@
-﻿# SmartLibrarian
+# 📚 Smart Librarian
 
-Smart Librarian
+A sleek **FastAPI + React (Vite)** app that recommends books by text **or** voice.  
+Speak your vibe → 🎙️ **STT** → 🤖 **RAG + LLM** → 📖 curated picks → (in background) 🔊 **TTS** + 🖼️ **cover image**.  
+The UI shows “Generating…” placeholders and swaps in media automatically when ready.
 
-FastAPI + React (Vite) app for book recommendations via text or voice.
-Voice is transcribed (STT), a recommendation is generated (RAG + LLM), then audio (TTS) and a cover image are produced in the background.
+---
 
-Tech Stack
+## ✨ Features
 
-Backend: FastAPI, ChromaDB, OpenAI SDK
+- 🔎 **RAG** book recommendations (`/api/recommend`)
+- 🎙️ **Voice search** (browser mic → `/api/stt/transcribe`)
+- 🔊 **TTS narration** (background, deterministic filenames)
+- 🖼️ **AI cover image** (background, deterministic filenames)
+- ⚡ **Fast**: single OpenAI client, Chroma init once, STT disk cache
+- 💸 **Cost controls**: disable TTS / Cover via env flags
+- 🧱 **Clean DX**: Vite proxy, Swagger docs, simple project layout
 
-Frontend: React (Vite)
+---
 
-Media: Whisper (STT), TTS, image generation
+## 🧰 Tech Stack
 
-Requirements
+**Backend:** FastAPI, ChromaDB, OpenAI SDK  
+**Frontend:** React (Vite)  
+**Media:** Whisper (STT), TTS, Image Gen
 
-Python 3.11+
+---
 
-Node 18+
+## ✅ Requirements
 
-OpenAI API key
+- Python **3.11+**
+- Node **18+**
+- An **OpenAI API key**
 
-Quick Start
-1) Backend
+---
+
+## 🚀 Quick Start
+
+### 1) Backend
+```bash
 python -m venv .venv
 # Windows
 .\.venv\Scripts\activate
@@ -31,29 +46,29 @@ source .venv/bin/activate
 
 pip install -r requirements.txt
 
-
-Create .env (copy from .env.example if present):
+Create .env at the repo root (copy from .env.example if present):
 
 OPENAI_API_KEY=sk-...
 CHAT_MODEL=gpt-4o-mini
-# Optional cost flags
+# Optional cost flags (1=on, 0=off)
 ENABLE_TTS=1
 ENABLE_COVER=1
 
 
-Run the API (choose a free port, e.g. 8020):
+Run the API (pick a free port, e.g. 8020):
 
 uvicorn app.api:app --app-dir . --port 8020
 
 
-API docs: http://localhost:8020/docs
+📖 Docs: http://localhost:8020/docs
 
-2) Frontend
+### 2) Frontend
+```bash
 cd frontend
 npm install
 
 
-Ensure the proxy targets your API port (in frontend/vite.config.js):
+Make sure frontend/vite.config.js proxies to your API port:
 
 server: {
   port: 5173,
@@ -65,35 +80,33 @@ server: {
 
 
 Run:
-
+```bash
 npm run dev
 
 
-App: http://localhost:5173
+## 🖥️ App: http://localhost:5173
 
-Configuration
+⚙️ Configuration
 
 Environment variables (backend):
 
-OPENAI_API_KEY – required
+Key	Default	Notes
+OPENAI_API_KEY	—	Required
+CHAT_MODEL	gpt-4o-mini	LLM for recommendations
+ENABLE_TTS	1	1/0 toggle audio generation
+ENABLE_COVER	1	1/0 toggle cover generation
 
-CHAT_MODEL – default: gpt-4o-mini
+🗂️ Generated DB & media live under .chroma/ (gitignored).
 
-ENABLE_TTS – 1/0 to enable/disable audio generation
-
-ENABLE_COVER – 1/0 to enable/disable cover generation
-
-Generated data & media live under .chroma/ (DB, STT uploads, TTS, images). This directory is gitignored.
-
-API (dev)
-
+📡 API (dev)
 POST /api/recommend
-Request:
+
+Request
 
 { "query": "dark academia with friendship themes" }
 
 
-Response (fields shown may be empty if features disabled):
+Response
 
 {
   "answer": "...",
@@ -103,20 +116,28 @@ Response (fields shown may be empty if features disabled):
   "candidates": [["Title A", 0.12], ["Title B", 0.18]]
 }
 
-
 POST /api/stt/transcribe
-Multipart form with file (webm/ogg/mp3/wav/m4a).
-Response:
+
+Multipart with file (webm/ogg/mp3/wav/m4a).
+Response
 
 { "text": "…", "url": "/static/stt/<uploaded>" }
 
-How Media Delivery Works (1-paragraph)
+## 🧠 How Media Delivery Works (1-minute mental model)
 
-The backend returns deterministic URLs for audio and images immediately; generation runs in a background task and saves to those paths. The frontend shows “Generating…” placeholders and HEAD-polls the URLs until they return 200, then swaps in the real media. Re-requests for the same content reuse the existing files (no extra API cost). STT is cached by file hash.
+The backend returns deterministic URLs for audio & image immediately.
 
-Project Structure (essentials)
+Generation runs in a background task and saves to those exact paths.
+
+The frontend shows “Generating…” and HEAD-polls those URLs until they return 200, then swaps in the real media.
+
+Repeated requests for the same content reuse existing files (no extra API cost).
+
+STT results are cached by file hash on disk.
+
+## 🗃️ Project Structure
 app/
-  api.py          # FastAPI app (routes, background tasks, static mounts)
+  api.py          # FastAPI app (routes, static mounts, background tasks)
   main.py         # Chroma init & helpers (no FastAPI here)
   tools/          # STT, TTS, image, dataset, filters, recommend
 frontend/
@@ -124,10 +145,15 @@ frontend/
   vite.config.js  # dev proxy → backend
 .chroma/          # DB + generated media (gitignored)
 
-Troubleshooting
+## 🛠️ Troubleshooting
 
-404 on /api/* – Proxy points to the wrong API port; update vite.config.js and restart both servers.
+404 on /api/* → Vite proxy points to the wrong API port. Update vite.config.js and restart both servers.
 
-Port in use – Stop the previous process or pick a new port (e.g. 8020) and update the proxy.
+Port already in use → Stop the previous process or pick a new port (e.g. 8020) and update the proxy.
 
-Media never appears – Confirm files land in .chroma/stt/ and .chroma/img/ with names matching the returned URLs.
+Media never appears → Check files land in:
+
+Audio → .chroma/stt/<hash>.mp3 (served at /static/stt/...)
+
+Image → .chroma/img/<hash>.png (served at /static/img/...)
+Filenames must match the URLs returned by /api/recommend.
