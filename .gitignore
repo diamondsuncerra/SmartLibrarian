@@ -2,5 +2,18 @@
 .chroma/
 __pycache__/
 .env
+.env.local
+.env*
 *.log
 .cache/
+# Node / frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.DS_Store
+
+# OS junk
+.DS_Store
+Thumbs.db
+node_modules
+dist

@@ -1,24 +1,58 @@
-# Logs
-logs
+# --- OS junk ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- IDE / editor ---
+.idea/
+.vscode/
+*.iml
+
+# --- Python / FastAPI ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage*
+htmlcov/
+.cache/
+# virtual envs
+.venv*/
+venv*/
+env*/
+# logs
 *.log
+
+# --- Chroma & generated assets (DB, TTS, covers, STT uploads, caches) ---
+.chroma/
+
+# --- Env files (keep example tracked) ---
+.env
+.env.*
+!.env.example
+.env.local
+
+# --- Node / Vite / front-end ---
+node_modules/
+dist/
+build/
+.tmp/
+.eslintcache
+.parcel-cache/
+.turbo/
+.vite/
+# lockfiles: we use npm; keep package-lock.json and ignore others
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# --- Framework leftovers (harmless if not used) ---
+.next/
+.nuxt/
