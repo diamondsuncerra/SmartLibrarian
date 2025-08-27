@@ -136,6 +136,7 @@ Repeated requests for the same content reuse existing files (no extra API cost).
 STT results are cached by file hash on disk.
 
 ## 🗃️ Project Structure
+```bash
 app/
   api.py          # FastAPI app (routes, static mounts, background tasks)
   main.py         # Chroma init & helpers (no FastAPI here)
@@ -144,7 +145,7 @@ frontend/
   src/            # App.jsx, MicSearch, styles
   vite.config.js  # dev proxy → backend
 .chroma/          # DB + generated media (gitignored)
-
+```
 ## 🛠️ Troubleshooting
 
 404 on /api/* → Vite proxy points to the wrong API port. Update vite.config.js and restart both servers.
@@ -157,4 +158,5 @@ Audio → .chroma/stt/<hash>.mp3 (served at /static/stt/...)
 
 Image → .chroma/img/<hash>.png (served at /static/img/...)
 Filenames must match the URLs returned by /api/recommend.
+
 
